@@ -1,0 +1,44 @@
+<h3>data-binding works!</h3>
+
+<button class="btn btn-primary" (click)="navigateToAdmin()"> navigate to admin</button>
+
+<p>{{ firstName }}</p>
+
+<div class="row">
+  <div class="col-4">
+    <input type="text" [(ngModel)]="firstName" />
+  </div>
+
+  <div class="col-4">
+    <input type="text" [placeholder]="myPlaceHolder" [value] = "firstName" />
+  </div>
+
+  <div
+    class="col-3"
+    [class]="div1ClassName"
+    style="height: 100px; width: 100px; margin: 50px"
+  ></div>
+</div>
+
+<div class="row">
+  <div class="col-3">
+    <button class="btn btn-success" (click)="onClick()">click me</button>
+  </div>
+
+  <div class="col-3">
+    <select #tech (change)="onChange(tech.value)">
+      <option value="Angular">Angular</option>
+      <option value="React">React</option>
+      <option value="Vue">Vue</option>
+    </select>
+  </div>
+
+  <div class="col-3">
+    <select [(ngModel)]="selectedTech">
+      <option value="Angular">Angular</option>
+      <option value="React">React</option>
+      <option value="Vue">Vue</option>
+    </select>
+    -- {{ selectedTech }}
+  </div>
+</div>

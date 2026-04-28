@@ -1,0 +1,17 @@
+<p>resource-api works!</p>
+
+<div class="row">
+    <div class="col-3">
+        {{ userList.hasValue() }}
+    </div>
+    <div class="col-3">
+        <ul>
+            @for(item of userList.value(); track $index) {
+                <li>{{ item.name }} </li>
+            }
+        </ul>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-success" (click) = "onReload()">reload</button>
+    </div>
+</div>

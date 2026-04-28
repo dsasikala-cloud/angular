@@ -1,0 +1,14 @@
+<div class="row p-3">
+    <div class="col-3" [ngStyle] = "{'background-color': div1Color}"> div 1 </div>
+    <div class="col-3" [ngStyle] = "{'background-color': isChecked ? 'pink' : 'yellow'}">div 2</div>
+    <div class="col-2" [ngStyle] = "myCss">div 3</div>
+</div>
+<div class="row p-3">
+    <div class="col-3">
+        <button class="btn btn-success" (click) = "addDiv1Color('green')">green</button>
+        <button class="btn btn-danger" (click) = "addDiv1Color('red')">red</button>
+    </div>
+    <div class="col-3">
+        <input type="checkbox" [(ngModel)]="isChecked" />
+    </div>
+</div>

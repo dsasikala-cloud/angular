@@ -1,0 +1,45 @@
+<p>pipe works!</p>
+
+<div class="row">
+    <div class="col-3">
+        <p>{{course | lowercase }}</p>
+    </div>
+
+    <div class="col-3">
+        <p>studentObj => {{ studentObj | json }}</p>
+    </div>
+
+    <div class="col-3">
+        <p>current date => {{ currentDate | date}}</p>
+    </div>
+
+     <div class="col-3">
+        <p>current date => {{ currentDate | date: 'dd-MM-yyyy' }}</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3">
+        <select>
+            <option *ngFor = "let emp of empList" [value] = "emp.id">{{ emp.name }}</option>
+        </select>
+    </div>
+    <div class="col-5">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>srno</th>
+                    <th>name</th>
+                    <th>city</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = "let emp of empList; let srno = index">
+                    <td>{{ srno+1 }} </td>
+                    <td> {{ emp.name | na }} </td>
+                    <td> {{ emp.city }} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

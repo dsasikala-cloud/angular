@@ -1,0 +1,59 @@
+<p>control-statement works!</p>
+
+<div class="row p-3">
+  <div class="col-3">
+    @if (isColor == true) {
+      <div class="bg-success">div 1</div>
+    }
+  </div>
+  <div class="col-3">
+    @if (isChecked == true) {
+      <div class="bg-primary">div 2</div>
+    } @else {
+      <div class="bg-danger">div 3</div>
+    }
+  </div>
+</div>
+
+<div class="row p-3">
+  <div class="col-3">
+    <button class="btn btn-success" (click)="hideShow(true)">show</button>
+    <button class="btn btn-danger" (click)="hideShow(false)">hide</button>
+  </div>
+  <div class="col-3">
+    <input type="checkbox" [(ngModel)]="isChecked" />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-3">
+    <select>
+      @for (city of cityList; track $index) {
+        <option>{{ city }}</option>
+      }
+    </select>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-5">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>srno</th>
+          <th>name</th>
+          <th>city</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of empList; track $index) {
+          <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.city}}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
