@@ -1,49 +1,65 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CustomerService } from '../../services/customer';
+import { CommonModule } from '@angular/common';
+import { Tabs } from "../../reusable/tabs/tabs";
 
 @Component({
   selector: 'app-customer',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule, Tabs],
   templateUrl: './customer.html',
   styleUrl: './customer.css',
 })
-export class Customer{
+export class Customer implements OnInit{
 
-  customerObj: any = {
+  userObj: any = {
     id: 0,
-    username: "",
-    firstName: "",
-    phone: "",
-    email: ""
+    name: '',
+    company: '',
+    username: '',
+    email: '',
+    phone: '',
   };
 
-  customerArray: any[] = [];
+  userArray: any[] = [];
+
+  userTabs: string[] = ["one", "two", "three"];
 
   constructor(private custSrv: CustomerService) {
-    // this.getcustomerObj();
+    // this.getUserObj();
   }
 
-  // getcustomerObj() {
-  //   this.http.get('https://fake-json-api.mock.beeceptor.com/customers').subscribe((res: any) => {
-  //     this.customerArray = res;
-  //   });
-  // }
+  ngOnInit() {
+    this.getUserObj();
+  }
 
-  getcustomerObj() {
-    this.custSrv.loadCustomers().subscribe((res: any) => {
-      // debugger;
-      this.customerArray = res.users;
+  getUserObj() {
+    this.custSrv.loadUsers().subscribe((res: any) => {
+      debugger;
+      console.log("API RESPONSE => ", res);
+      this.userArray = res;
+      console.log("USER ARRAY => ", this.userArray);
     })
   }
 
-  saveCustomer() {
-    this.custSrv.createCustomer(this.customerObj).subscribe((res: any) => {
+  resetForm() {
+    this.userObj = {
+    id: 0,
+    name: '',
+    company: '',
+    username: '',
+    email: '',
+    phone: '',
+  };
+  }
+
+  saveUser() {
+    this.custSrv.createUsers(this.userObj).subscribe((res: any) => {
       if(res && res.id) {
         alert("customer created");
         // this.customerObj.unshift(res);
-        this.getcustomerObj();
+        this.getUserObj();
       } else {
         alert(res.message);
       }

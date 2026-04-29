@@ -19,6 +19,9 @@ import { DeleteApi } from './API/delete-api/delete-api';
 import { ReactiveForm } from './reactive-form/reactive-form';
 import { ResourceApi } from './resource-api/resource-api';
 import { Customer } from './API/customer/customer';
+import { ProgressBar } from './reusable/progress-bar/progress-bar';
+import { Tabs } from './reusable/tabs/tabs';
+import { LifeCycle } from './life-cycle/life-cycle';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +29,7 @@ import { Customer } from './API/customer/customer';
     NgClassComponent, NgStyleComponent, ControlStatement, 
     RouterOutlet, RouterLink, Signal, LinkedSignal, TemplateForm,
     PipeComponent, ControlStatement, GetApi, PostApi, PutApi, DeleteApi, 
-    ReactiveForm, ResourceApi, Customer],
+    ReactiveForm, ResourceApi, Customer, ProgressBar, Tabs, LifeCycle],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

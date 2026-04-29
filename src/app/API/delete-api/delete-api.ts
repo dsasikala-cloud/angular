@@ -10,32 +10,31 @@ import { FormsModule } from '@angular/forms';
 })
 export class DeleteApi {
 
-  carList: any[] = [];
-  carObj: any = {
-    carId: 0,
-    bigintrand: "",
-    model: "",
-    year: "",
-    color: "",
-    dailyRate: "",
-    carImage: "",
-    regNo: "",
+  userList: any[] = [];
+  userObj: any = {
+    id: 0,
+    name: '',
+    company: '',
+    username: '',
+    email: '',
+    phone: '',
   };
+  
   http = inject(HttpClient);
 
-  getCars() {
-    this.http.get('/api/CarRentalApp/GetCars').subscribe((result: any) => {
-      this.carList = result.data;
+  getUsers() {
+    this.http.get('https://69f19763c1533dbedc9e893e.mockapi.io/api/sk/users').subscribe((result: any) => {
+      this.userList = result;
     });
   }
 
-  saveCar() {
+  saveUser() {
     debugger;
-    this.http.post('/api/CarRentalApp/CreateNewCar', this.carObj).subscribe((res: any) => {
+    this.http.post('https://69f19763c1533dbedc9e893e.mockapi.io/api/sk/users', this.userObj).subscribe((res: any) => {
       debugger;
-      if(res.result){
-        alert('car saved');
-        this.getCars();
+      if(res){
+        alert('user saved');
+        this.getUsers();
       }
       else {
         alert(res.message);
@@ -44,7 +43,7 @@ export class DeleteApi {
   }
 
   onEdit(data: any) {
-    this.carObj = data;
+    this.userObj = {...data};
   }
 
   onDelete(id: any) {
@@ -52,10 +51,10 @@ export class DeleteApi {
     const isDelete = confirm("are you sure want to delete?");
     debugger;
     if(isDelete) {
-      this.http.delete('/api/CarRentalApp/DeleteCarbyCarId?carId=' + id).subscribe((res: any) => {
-      if(res.result){
-        alert('car deleted');
-        this.getCars();
+      this.http.delete(`https://69f19763c1533dbedc9e893e.mockapi.io/api/sk/users/${id}`).subscribe((res: any) => {
+      if(res){
+        alert('user deleted');
+        this.getUsers();
       }
       else {
         alert(res.message);
@@ -64,11 +63,11 @@ export class DeleteApi {
     }
   }
 
-  updateCar() {
-    this.http.put('/api/CarRentalApp/UpdateCar', this.carObj).subscribe((res: any) => {
-      if(res.result){
-        alert('car updated');
-        this.getCars();
+  updateUser() {
+    this.http.put(`https://69f19763c1533dbedc9e893e.mockapi.io/api/sk/users/${this.userObj.id}`, this.userObj).subscribe((res: any) => {
+      if(res){
+        alert('user updated');
+        this.getUsers();
       }
       else {
         alert(res.message);

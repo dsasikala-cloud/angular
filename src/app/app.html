@@ -12,6 +12,7 @@
 <!-- <app-control-statement /> -->
 <!-- <app-reactive-form /> -->
 <!-- <app-resource-api /> -->
+ <!-- <app-progress-bar /> -->
 
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -35,10 +36,33 @@
             <li><a class="dropdown-item" routerLink="put-api">put-api</a></li>
             <li><a class="dropdown-item" routerLink="post-api">post-api</a></li>
             <li><a class="dropdown-item" routerLink="delete-api">delete-api</a></li>
+            <li><a class="dropdown-item" routerLink="resource-api">Resource API</a></li>
             <li><a class="dropdown-item" routerLink="customer">customer</a></li>
           </ul>
         </li>
-        <a class="nav-link" routerLink="resource-api">Resource API</a>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" id="navDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Directives
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navDropdown">
+            <li><a class="dropdown-item" routerLink="ng-if">ng-if</a></li>
+            <li><a class="dropdown-item" routerLink="ng-for">ng-for</a></li>
+            <li><a class="dropdown-item" routerLink="ng-style">ng-style</a></li>
+            <li><a class="dropdown-item" routerLink="ng-class">ng-class</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" id="navDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Inp/Out
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navDropdown">
+            <a class="nav-link" routerLink="app-progress-bar">ProgressBar</a>
+            <a class="nav-link" routerLink="app-tabs">Tabs</a>
+          </ul>
+        </li>
+        <a class="nav-link" routerLink="app-life-cycle">Life Cycle</a>
       </div>
     </div>
   </div>

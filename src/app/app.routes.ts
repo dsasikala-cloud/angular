@@ -11,6 +11,11 @@ import { PutApi } from './API/put-api/put-api';
 import { DeleteApi } from './API/delete-api/delete-api';
 import { ResourceApi } from './resource-api/resource-api';
 import { Customer } from './API/customer/customer';
+import { ProgressBar } from './reusable/progress-bar/progress-bar';
+import { NgForComponent } from './ng-for/ng-for';
+import { NgIfComponent } from './ng-if/ng-if';
+import { Tabs } from './reusable/tabs/tabs';
+import { LifeCycle } from './life-cycle/life-cycle';
 
 export const routes: Routes = [
     {
@@ -65,5 +70,25 @@ export const routes: Routes = [
     {
         path: "customer",
         component: Customer
+    },
+    {
+        path: "app-progress-bar",
+        component: ProgressBar
+    },
+    {
+        path: "ng-if",
+        component: NgIfComponent
+    },
+    {
+        path: "ng-for",
+        component: NgForComponent
+    },
+    {
+        path: "app-tabs",
+        component: Tabs
+    }, 
+    {
+        path: "app-life-cycle",
+        component: LifeCycle
     }
 ];

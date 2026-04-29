@@ -23,6 +23,7 @@
                     <th>srno</th>
                     <th>name</th>
                     <th>city</th>
+                    <th>attendance</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,6 +31,9 @@
                     <td>{{ srno+1 }} </td>
                     <td> {{ emp.name }} </td>
                     <td> {{ emp.city }} </td>
+                    <td>
+                        <app-progress-bar [progress]="emp.attendance"></app-progress-bar> 
+                    </td>
                 </tr>
             </tbody>
         </table>

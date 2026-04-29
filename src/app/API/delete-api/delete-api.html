@@ -1,37 +1,38 @@
 <p>delete-api works!</p>
 
-
-<div class="container mt-4">
+<div class="container-fluid mt-4">
   <div class="row">
     <div class="col-6">
-      <button class="btn btn-success" (click)="getCars()">load car data</button>
+      <button class="btn btn-success" (click)="getUsers()">load user data</button>
       <div class="card">
-        <div class="card-header bg-warning fw-bold">Car List</div>
+        <div class="card-header bg-warning fw-bold">User List</div>
 
         <div class="card-body p-0">
           <table class="table table-bordered m-0">
             <thead>
               <tr>
                 <th>Sr No</th>
-                <th>Brand</th>
-                <th>Model</th>
-                <th>Reg No</th>
-                <th>Daily Rate</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Company</th>
+                <th>Email</th>
+                <th>Phone</th>
                 <th>Actions</th>
               </tr>
             </thead>
 
             <tbody>
-              @for (car of carList; track $index) {
+              @for (user of userList; track $index) {
                 <tr>
                   <td>{{ $index + 1 }}</td>
-                  <td>{{ car.brand }}</td>
-                  <td>{{ car.model }}</td>
-                  <td>{{ car.regNo }}</td>
-                  <td>{{ car.dailyRate }}</td>
+                  <td>{{ user.name }}</td>
+                  <td>{{ user.username }}</td>
+                  <td>{{ user.company }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.phone }}</td>
                   <td>
-                    <button class="btn btn-success" (click)="onEdit(car)">edit</button>
-                    <button class="btn btn-danger" (click)="onDelete(car.carId)">delete</button>
+                    <button class="btn btn-success" (click)="onEdit(user)">edit</button>
+                    <button class="btn btn-danger" (click)="onDelete(user.id)">delete</button>
                   </td>
                 </tr>
               }
@@ -41,105 +42,85 @@
       </div>
     </div>
 
+    <div class="col-1"></div>
+
     <!-- RIGHT SIDE → FORM -->
-    <div class="col-6">
+    <div class="col-5">
       <div class="card">
-        <div class="card-header bg-warning fw-bold">Create New Car</div>
+        <div class="card-header bg-warning fw-bold">Create New User</div>
 
         <div class="card-body">
           <form>
             <div class="row mb-2">
               <div class="col-6">
-                <label>sr No</label>
+                <label>Name</label>
                 <input
                   type="text"
-                  [(ngModel)]="carObj.regNo"
-                  name="carReg"
+                  [(ngModel)]="userObj.name"
+                  name="name"
                   class="form-control"
-                  placeholder="Enter reg no"
-                />
-              </div>
-
-              <div class="col-6">
-                <label>Brand</label>
-                <input
-                  type="text"
-                  [(ngModel)]="carObj.brand"
-                  name="brand"
-                  class="form-control"
-                  placeholder="Enter brand"
+                  placeholder="Enter name"
                 />
               </div>
             </div>
 
             <div class="row mb-2">
               <div class="col-6">
-                <label>Model</label>
+                <label>Username</label>
                 <input
                   type="text"
-                  [(ngModel)]="carObj.model"
-                  name="model"
+                  [(ngModel)]="userObj.username"
+                  name="username"
                   class="form-control"
-                  placeholder="Enter model"
+                  placeholder="Enter username"
                 />
               </div>
 
               <div class="col-6">
-                <label>Year</label>
+                <label>Company</label>
                 <input
                   type="text"
-                  [(ngModel)]="carObj.year"
-                  name="year"
+                  [(ngModel)]="userObj.company"
+                  name="company"
                   class="form-control"
-                  placeholder="Enter year"
+                  placeholder="Enter company"
                 />
               </div>
             </div>
 
             <div class="row mb-2">
               <div class="col-6">
-                <label>Color</label>
+                <label>Email</label>
                 <input
                   type="text"
-                  [(ngModel)]="carObj.color"
-                  name="color"
+                  [(ngModel)]="userObj.email"
+                  name="email"
                   class="form-control"
-                  placeholder="Enter daily rate"
+                  placeholder="Enter email"
                 />
               </div>
 
               <div class="col-6">
-                <label>Daily Rate</label>
+                <label>Phone</label>
                 <input
                   type="text"
-                  [(ngModel)]="carObj.dailyRate"
-                  name="dailyRate"
+                  [(ngModel)]="userObj.phone"
+                  name="phone"
                   class="form-control"
-                  placeholder="Enter daily rate"
+                  placeholder="Enter phone no"
                 />
               </div>
-            </div>
-
-            <div class="mb-3">
-              <label>Car Image URL</label>
-              <input
-                type="text"
-                [(ngModel)]="carObj.carImage"
-                name="carImage"
-                class="form-control"
-                placeholder="Enter image URL"
-              />
             </div>
 
             <div class="text-end">
               <button type="reset" class="btn btn-secondary me-2">Reset Form</button>
-              --{{ carObj.carId }}
+              --{{ userObj.id }}
 
-              @if (carObj.carId == 0) {
-                <button type="button" class="btn btn-success" (click)="saveCar()">Save Car</button>
+              @if (userObj.id == 0) {
+                <button type="button" class="btn btn-success" (click)="saveUser()">Save User</button>
               } @else {
-                <button type="button" class="btn btn-primary" (click)="updateCar()">
-                  Update Car
+                <button type="button" class="btn btn-primary" (click)="updateUser()">
+                  Update User
                 </button>
               }
             </div>
@@ -149,4 +130,3 @@
     </div>
   </div>
 </div>
-

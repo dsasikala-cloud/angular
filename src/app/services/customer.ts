@@ -10,12 +10,12 @@ export class CustomerService {
 
   }
 
-  loadCustomers() {
-    return this.http.get('https://dummyjson.com/users');
+  loadUsers() {
+    return this.http.get('https://69f19763c1533dbedc9e893e.mockapi.io/api/sk/users');
   }
 
-  createCustomer(obj: any) {
-    return this.http.post('https://dummyjson.com/users/add', obj);
+  createUsers(obj: any) {
+    return this.http.post('https://69f19763c1533dbedc9e893e.mockapi.io/api/sk/users', obj);
   }
 
 }

@@ -1,41 +1,49 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Tabs } from "../../reusable/tabs/tabs";
 
 @Component({
   selector: 'app-post-api',
-  imports: [FormsModule],
+  imports: [FormsModule, Tabs],
   templateUrl: './post-api.html',
   styleUrl: './post-api.css',
 })
 export class PostApi {
-  carList: any[] = [];
-  carObj: any = {
-    carId: 0,
-    bigintrand: "",
-    model: "",
-    year: "",
-    color: "",
-    dailyRate: "",
-    carImage: "",
-    regNo: "",
+  userList: any[] = [];
+  userObj: any = {
+    name: "",
+    company: "",
+    username: "",
+    email: "",
+    phone: ""
   };
+
+  userTabs: string[] = ["userList", "userForm"]
+  currentTab: string = "";
   
   http = inject(HttpClient);
 
-  getCars() {
-    this.http.get('/api/CarRentalApp/GetCars').subscribe((result: any) => {
-      this.carList = result.data;
+  onTabChange(tabName: string) {
+    debugger;
+    this.currentTab = tabName;
+  }
+
+  getUsers() {
+    debugger;
+    this.http.get("https://69f19763c1533dbedc9e893e.mockapi.io/api/sk/users").subscribe((result: any) => {
+      debugger;
+      this.userList = result;
     });
   }
 
-  saveCar() {
+  saveUser() {
     debugger;
-    this.http.post('/api/CarRentalApp/CreateNewCar', this.carObj).subscribe((res: any) => {
+    this.http.post("https://69f19763c1533dbedc9e893e.mockapi.io/api/sk/users", this.userObj).subscribe((res: any) => {
       debugger;
-      if(res.result){
-        alert('car saved');
-        this.getCars();
+      if(res){
+        alert('user saved');
+        this.getUsers();
       }
       else {
         alert(res.message);
@@ -43,3 +51,8 @@ export class PostApi {
     });
   }
 }
+
+
+
+// https://json-placeholder.mock.beeceptor.com/users
+// https://jsonplaceholder.typicode.com/posts

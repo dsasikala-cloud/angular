@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Master } from '../service/master';
+import { ProgressBar } from '../reusable/progress-bar/progress-bar';
 
 @Component({
   selector: 'app-control-statement',
-  imports: [FormsModule],
+  imports: [FormsModule, ProgressBar],
   templateUrl: './control-statement.html',
   styleUrl: './control-statement.css',
 })

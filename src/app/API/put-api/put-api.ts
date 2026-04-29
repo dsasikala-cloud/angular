@@ -9,54 +9,68 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './put-api.css',
 })
 export class PutApi {
-
-  carList: any[] = [];
-  carObj: any = {
-    carId: 0,
-    bigintrand: "",
-    model: "",
-    year: "",
-    color: "",
-    dailyRate: "",
-    carImage: "",
-    regNo: "",
+  userList: any[] = [];
+  userObj: any = {
+    id: 0,
+    name: '',
+    company: '',
+    username: '',
+    email: '',
+    phone: '',
   };
   http = inject(HttpClient);
 
-  getCars() {
-    this.http.get('/api/CarRentalApp/GetCars').subscribe((result: any) => {
-      this.carList = result.data;
-    });
+  getUsers() {
+    this.http
+      .get('https://69f19763c1533dbedc9e893e.mockapi.io/api/sk/users')
+      .subscribe((result: any) => {
+        this.userList = result;
+      });
   }
 
-  saveCar() {
+  saveUser() {
     debugger;
-    this.http.post('/api/CarRentalApp/CreateNewCar', this.carObj).subscribe((res: any) => {
-      debugger;
-      if(res.result){
-        alert('car saved');
-        this.getCars();
-      }
-      else {
-        alert(res.message);
-      }
-    });
+    this.http
+      .post('https://69f19763c1533dbedc9e893e.mockapi.io/api/sk/users', this.userObj)
+      .subscribe((res: any) => {
+        debugger;
+        if (res.result) {
+          alert('user saved');
+          this.getUsers();
+        } else {
+          alert(res.message);
+        }
+      });
   }
 
   onEdit(data: any) {
-    this.carObj = data;
+    this.userObj = { ...data };
   }
 
-  updateCar() {
-    this.http.put('/api/CarRentalApp/UpdateCar', this.carObj).subscribe((res: any) => {
-      if(res.result){
-        alert('car updated');
-        this.getCars();
-      }
-      else {
-        alert(res.message);
-      }
-    });
+  resetForm() {
+    this.userObj = {
+      id: 0,
+      name: '',
+      company: '',
+      username: '',
+      email: '',
+      phone: '',
+    };
   }
 
+  updateUser() {
+    debugger;
+    this.http
+      .put(`https://69f19763c1533dbedc9e893e.mockapi.io/api/sk/users/${this.userObj.id}`, this.userObj)
+      .subscribe((res: any) => {
+        debugger;
+        if (res) {
+          alert('User updated');
+          this.getUsers();
+          this.resetForm();
+        } else {
+          alert(res.message);
+        }
+      });
+  }
 }
