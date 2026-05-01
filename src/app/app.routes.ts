@@ -16,6 +16,8 @@ import { NgForComponent } from './ng-for/ng-for';
 import { NgIfComponent } from './ng-if/ng-if';
 import { Tabs } from './reusable/tabs/tabs';
 import { LifeCycle } from './life-cycle/life-cycle';
+import { RxJsBasics } from './rx-js-basics/rx-js-basics';
+import { RxJsOperators } from './rx-js-operators/rx-js-operators';
 
 export const routes: Routes = [
     {
@@ -90,5 +92,13 @@ export const routes: Routes = [
     {
         path: "app-life-cycle",
         component: LifeCycle
+    },
+    {
+        path: "app-rx-js-basics",
+        component: RxJsBasics
+    }, 
+    {
+        path: "app-rx-js-operators",
+        component: RxJsOperators
     }
 ];

@@ -22,6 +22,8 @@ import { Customer } from './API/customer/customer';
 import { ProgressBar } from './reusable/progress-bar/progress-bar';
 import { Tabs } from './reusable/tabs/tabs';
 import { LifeCycle } from './life-cycle/life-cycle';
+import { RxJsBasics } from './rx-js-basics/rx-js-basics';
+import { RxJsOperators } from './rx-js-operators/rx-js-operators';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +31,8 @@ import { LifeCycle } from './life-cycle/life-cycle';
     NgClassComponent, NgStyleComponent, ControlStatement, 
     RouterOutlet, RouterLink, Signal, LinkedSignal, TemplateForm,
     PipeComponent, ControlStatement, GetApi, PostApi, PutApi, DeleteApi, 
-    ReactiveForm, ResourceApi, Customer, ProgressBar, Tabs, LifeCycle],
+    ReactiveForm, ResourceApi, Customer, ProgressBar, Tabs, LifeCycle,
+    RxJsBasics, RxJsOperators],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
